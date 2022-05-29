@@ -4,9 +4,50 @@ function calcola() {
     bone = document.getElementById("id_yone").value;
     btwo = document.getElementById("id_ytwo").value;
     //maybe c1 and c2 are not needed
+    aone = numfix(aone);
+    atwo = numfix(atwo);
+    bone = numfix(bone);
+    btwo = numfix(btwo);
 
-    det = determinante(numfix(aone), numfix(atwo), numfix(bone), numfix(btwo));
-    document.getElementById("answertext").innerHTML = "Determinante: " + det;
+    det = determinante(aone, atwo, bone, btwo);
+
+    if (det == 0) {
+        document.getElementById("answertext").innerHTML = "La trasformazione non è un'affinità";
+    }
+
+    else {
+        if (det != 1) {
+            if (aone*aone + atwo*atwo == bone*bone + btwo*btwo && aone*bone + atwo*btwo == 0) {
+                if (bone == 0 && atwo == 0) {
+                    document.getElementById("answertext").innerHTML = "Determinante: " + det 
+                + "<br>La trasformazione è una OMOTETIA";
+                }
+                else {
+                document.getElementById("answertext").innerHTML = "Determinante: " + det 
+                + "<br>La trasformazione è una SIMILITUDINE " + direttaindiretta(det);
+                }
+            }
+            else {
+                document.getElementById("answertext").innerHTML = "Determinante: " + det 
+                + "<br>La trasformazione è una AFFINITA' GENERICA " + direttaindiretta(det);
+            }
+        }
+
+        if (det == 1) {
+            if (aone*aone + atwo*atwo == 1 && bone*bone + btwo*btwo == 1 && aone*bone + atwo*btwo == 0) {
+                document.getElementById("answertext").innerHTML = "Determinante: " + det 
+                + "<br>La trasformazione è una ISOMETRIA " + direttaindiretta(det);
+            }
+            else {
+                document.getElementById("answertext").innerHTML = "Determinante: " + det 
+                + "<br>La trasformazione è una EQUIVALENZA";
+            }
+        }
+        else {
+            document.getElementById("answertext").innerHTML = "Determinante: " + det;
+        }
+    }
+    
 }
 
 function determinante(aone, atwo, bone, btwo) {
@@ -16,7 +57,7 @@ function determinante(aone, atwo, bone, btwo) {
     } 
     else {
         if (math.fraction(det).d == 1) {
-            return det;
+            return Math.round(det);
         }
         if (det < 0) {
             det = math.fraction(det);
@@ -62,3 +103,13 @@ function numfix(str) {
         else return str;
     }
 } 
+
+function direttaindiretta(num) {
+    num = num.toString();
+    if (num.charAt(0) == "-") {
+        return "<u>Indiretta</u>";
+    }
+    else {
+        return "<u>Diretta</u>";
+    }
+}
