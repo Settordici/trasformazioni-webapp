@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/mathjs@10.6.0/lib/browser/math.js"></script>
+    <title>trasformazioni - webapp</title>
+</head>
+    
+<body>
+        <div class="container">
+            <h1 class="title">Trasformazioni</h1>
+            <h3>Per le radici, scrivere + o - rad e poi il numero. Es. -rad3</h3>
+            <div class="container">
+                <div class="equation">
+                    <p>x' = </p>
+                    <input type="text" id="id_xone" class="input" placeholder="a1x">
+                    <p> + </p>
+                    <input type="text" id="id_yone" class="input" placeholder="b1y">
+                    <p> + </p>
+                    <input type="text" id="id_cone" class="input" placeholder="c1">
+                    <br>
+                </div>
+                <div class="equation">
+                    <p>y' = </p>
+                    <input type="text" id="id_xtwo" class="input" placeholder="a2x">
+                    <p> + </p>
+                    <input type="text" id="id_ytwo" class="input" placeholder="b2y">
+                    <p> + </p>
+                    <input type="text" id="id_ctwo" class="input" placeholder="c2">
+                    <br>
+                </div>
+                <input onclick="calcola()" type="submit" value="Calcola" class="button">
+        </div>
+        <div class="answer">
+            <p id="answertext">Inserisci tutti i dati e premi calcola per sapere che trasformazione è</p>
+        </div>
+</body>
+
+<script type="text/javascript" src="script.js"></script>
+
+</html>
