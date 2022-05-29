@@ -30,7 +30,8 @@ function calcola() {
                 else {
                 document.getElementById("answertext").innerHTML = "Determinante: " + det 
                 + "<br>La trasformazione è una SIMILITUDINE " + direttaindiretta(det)
-                + "<br>Punti uniti: " + puntiuniti(aone, atwo, bone, btwo, cone, ctwo);
+                + "<br>Punti uniti: " + puntiuniti(aone, atwo, bone, btwo, cone, ctwo)
+                + "<br>Rapporto di similitudine: " + Math.sqrt(Math.abs(det)) + " oppure rad" + Math.abs(det);
                 }
             }
             else {
@@ -66,8 +67,7 @@ function calcola() {
                     else {
                         document.getElementById("answertext").innerHTML = "Determinante: " + det 
                         + "<br>La trasformazione è una ISOMETRIA INDIRETTA, più precisamente"
-                        + " una SIMMETRIA ASSIALE"
-                        + "<br>con retta(sperimentale):" + puntiuniti(aone, atwo, bone, btwo, cone, ctwo);
+                        + " una SIMMETRIA ASSIALE";
                     }
 
                 }
